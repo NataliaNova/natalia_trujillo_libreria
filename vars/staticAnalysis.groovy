@@ -3,8 +3,7 @@ def call(boolean abortPipeline = false) {
         echo 'Ejecución de las pruebas de calidad de código'
     }
 
-    // Esperar resultados de Quality Gate
-    timeout(time: 5, unit: 'MINUTES') {
+       timeout(time: 5, unit: 'MINUTES') {
         def qg = waitForQualityGate()
         echo "Quality Gate status: ${qg.status}"
 
