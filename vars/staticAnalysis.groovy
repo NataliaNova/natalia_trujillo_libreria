@@ -1,9 +1,9 @@
 def call(boolean abortPipeline = false) {
     withSonarQubeEnv('SonarQube') {
-        echo 'Ejecución de las pruebas de calidad de código'
+        bat "\"C:\\sonar-scanner-4.8.0.2856-windows\\bin\\sonar-scanner.bat\" -Dsonar.projectKey=DevOpsWeb -Dsonar.sources=src"
     }
 
-       timeout(time: 5, unit: 'MINUTES') {
+    timeout(time: 5, unit: 'MINUTES') {
         def qg = waitForQualityGate()
         echo "Quality Gate status: ${qg.status}"
 
